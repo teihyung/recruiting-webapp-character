@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Attribute } from './Attribute';
 import { Class } from './Class';
 import { Character } from '../consts';
+import Skills from './Skill';
 
 export const CharacterPage: React.FC<{ character: Character }> = ({ character }) => {
     const [attributes, setAttributes] = useState<Character>({
@@ -14,9 +15,10 @@ export const CharacterPage: React.FC<{ character: Character }> = ({ character })
     });
 
     return (
-        <div>
+        <div className="character-page-container">
             <Attribute attributes={attributes} setAttributes={setAttributes} />
             <Class character={attributes} />
-        </div>
+            <Skills attributes={attributes} />
+    </div>
     );
 };

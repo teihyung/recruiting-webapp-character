@@ -1,22 +1,11 @@
 import { useState } from "react";
 import "./App.css";
-import { ATTRIBUTE_LIST, CLASS_LIST, SKILL_LIST } from "./consts";
 
 import { Result } from "../src/component/Result";
-import { Attribute } from "../src/component/Attribute";
 import { CharacterPage } from "../src/component/ChracterPage";
+import { Character } from './consts';
 
 function App() {
-
-  interface Character {
-    Strength: number;
-    Dexterity: number;
-    Constitution: number;
-    Intelligence: number;
-    Wisdom: number;
-    Charisma: number;
-  }
-
   const firstCharacter: Character = {
     Strength: 10,
     Dexterity: 10,
@@ -44,7 +33,6 @@ function App() {
 
         <div className = "Chracter-stat-page">
           <CharacterPage character={characterList[0]} />
-          
         </div>
 
 
