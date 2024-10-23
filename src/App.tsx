@@ -4,6 +4,7 @@ import { ATTRIBUTE_LIST, CLASS_LIST, SKILL_LIST } from "./consts";
 
 import { Result } from "../src/component/Result";
 import { Attribute } from "../src/component/Attribute";
+import { CharacterPage } from "../src/component/ChracterPage";
 
 function App() {
 
@@ -39,10 +40,11 @@ function App() {
           <Result id={1} skill="Strength" rolledNum={num} DCNumber={10} />
         </div>
 
-        <br></br>
+        
 
         <div className = "Chracter-stat-page">
-          <Attribute character = {characterList[0]} />
+          <CharacterPage character={characterList[0]} />
+          
         </div>
 
 

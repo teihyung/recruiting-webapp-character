@@ -1,24 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Character } from '../consts';
 
-interface Character {
-    Strength: number;
-    Dexterity: number;
-    Constitution: number;
-    Intelligence: number;
-    Wisdom: number;
-    Charisma: number;
+interface AttributeProps {
+    attributes: Character;
+    setAttributes: React.Dispatch<React.SetStateAction<Character>>;
 }
 
-export const Attribute: React.FC<{ character: Character }> = ({ character }) => {
-    const [attributes, setAttributes] = useState<Character>({
-        Strength: 10,
-        Dexterity: 10,
-        Constitution: 10,
-        Intelligence: 10,
-        Wisdom: 10,
-        Charisma: 10,
-    });
-
+export const Attribute: React.FC<AttributeProps> = ({ attributes, setAttributes }) => {
     const totalPoints = Object.values(attributes).reduce((acc, value) => acc + value, 0);
 
     const handleIncrement = (key: keyof Character) => {

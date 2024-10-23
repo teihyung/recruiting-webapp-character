@@ -1,5 +1,13 @@
 import type { Attributes, Class } from "./types";
 
+export interface Character {
+    Strength: number;
+    Dexterity: number;
+    Constitution: number;
+    Intelligence: number;
+    Wisdom: number;
+    Charisma: number;
+}
 
 export const ATTRIBUTE_LIST = [
     'Strength',
