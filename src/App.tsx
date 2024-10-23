@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
-
 import { Result } from "../src/component/Result";
 import { CharacterPage } from "../src/component/ChracterPage";
 import { Character } from './consts';
+import { SKILL_LIST } from './consts';
 
 function App() {
   const firstCharacter: Character = {
@@ -17,6 +17,8 @@ function App() {
 
   const characterList: Character[] = [firstCharacter];
   const [num, setNum] = useState<number>(0);
+  const [selectedSkill, setSelectedSkill] = useState<string>(SKILL_LIST[0].name);
+
 
   return (
     <div className="App">
@@ -24,18 +26,37 @@ function App() {
         <h1>React Coding Exercise - Chris Lee</h1>
       </header>
       <section className="App-section">
+        <div>
+          <Result id={1} skill={selectedSkill} DCNumber={num} />
+        </div>
 
         <div>
-          <Result id={1} skill="Strength" rolledNum={num} DCNumber={10} />
+          <label>Skill:</label>
+          <select
+            id="skill-select"
+            value={selectedSkill}
+            onChange={(e) => setSelectedSkill(e.target.value)}
+          >
+            {SKILL_LIST.map((skill) => (
+              <option key={skill.name} value={skill.name}>
+                {skill.name}
+              </option>
+            ))}
+          </select>
+
+          <label>DC:</label>
+          <input
+            type="number"
+            value={num}
+            min={1}
+            max={20}
+            onChange={(e) => setNum(Math.max(1, Math.min(20, parseInt(e.target.value))))}
+          />
         </div>
 
-        
-
-        <div className = "Chracter-stat-page">
+        <div className="Character-stat-page">
           <CharacterPage character={characterList[0]} />
         </div>
-
-
       </section>
     </div>
   );
